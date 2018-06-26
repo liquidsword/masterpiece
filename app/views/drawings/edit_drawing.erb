@@ -1,0 +1,9 @@
+<h2>Delete?? Are you sure? :) </h2>
+
+<form method="post" action="/drawings/<%= @drawing.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <input type="text" name="art" value="<%= @drawing.art%>">
+  <input type="submit" value="submit">
+  <input type="submit" value="Delete Drawing"
+  
+</form>

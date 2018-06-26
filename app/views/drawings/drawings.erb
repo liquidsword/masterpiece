@@ -1,0 +1,9 @@
+<p> Welcome to <%= current_artist.artist_name %>'s masterpieces! </p>
+
+<h2> Drawings </h2>
+
+<% @drawings.each do |drawing| %>
+  <div>
+    <%= drawing.art %>
+  </div>
+<% end %>
