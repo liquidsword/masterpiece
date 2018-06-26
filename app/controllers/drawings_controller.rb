@@ -6,70 +6,73 @@ class DrawingsController < ApplicationController
             erb :'drawings/drawings'
         else
             redirect to '/login'
-    end
-
-    get '/drawing/new' do
-        redirect_if_not_logged_in
-        @error_message = params[:error]
-        erb :'drawing/new'
-    end
-
-    post '/drawing' do
-        redirect_if_not_logged_in
-        if params[:art]== ""
-            redirect to '/drawing/new'
-        else
-            artist = Artist.find(session[:artist_id])
-            @drawing = drawing.create(:art => params[:art], :artist_id => artist.id)
-            redirect to "/drawing/#{@drawing.id}"
         end
     end
 
-    get '/drawing/:id' do
-        redirect_if_not_logged_in       
-        @drawing = drawing.find(params[:id])
-        erb :'/drawing/show_drawing'
+    get '/drawings/new' do
+        if session[:artist_id]
+            erb :'drawings/create_drawing'
+        else
+            redirect to '/login'
+        end
     end
 
-    get '/drawing/:id/edit' do
-        redirect_if_not_logged_in
-        @error_message = params[:error]
+    post '/drawings' do
+        
+        if params[:art]== ""
+            redirect to '/drawings/new'
+        else
+            artist = Artist.find_by_id(session[:artist_id])
+            @drawing = Drawing.create(:art => params[:art], :artist_id => artist.id)
+            redirect to "/drawings/#{@drawing.id}"
+        end
+    end
+
+    get '/drawings/:id' do
+        if session[:artist_id]      
+            @drawing = Drawing.find_by_id(params[:id])
+            erb :'/drawings/show_drawing'
+        else
+            redirect to '/login'
+        end
+    end
+
+    get '/drawings/:id/edit' do
         if session[:artist_id]
-            @drawing = drawing.find(params[:id])
+            @drawing = Drawing.find_by_id(params[:id])
             if @drawing.artist_id == session[:artist_id]
-                erb :'drawing/edit_drawing'
+                erb :'drawings/edit_drawing'
             else
-                redirect to '/drawing'
+                redirect to '/drawings'
             end
         else
             redirect to '/login'
         end
     end
         
-    patch '/drawing/:id' do
+    patch '/drawings/:id' do
         if params[:art] == ""
-            redirect to "/drawing/#{params[:id]}/edit"
+            redirect to "/drawings/#{params[:id]}/edit"
         else
-            @drawing = drawing.find(params[:id])
+            @drawing = Drawing.find_by_id(params[:id])
             @drawing.art = params[:art]
             @drawing.save
-            redirect to "/drawing/#{@drawing.id}"
+            redirect to "/drawings/#{@drawing.id}"
         end
     end
     
-    delete '/drawing/:id/delete' do
-        @drawing = drawing.find(params[:id])
+    delete '/drawings/:id/delete' do
+        @drawing = Drawing.find_by_id(params[:id])
         if session[:artist_id]
-            @drawing = drawing.find(params[:id])
+            @drawing = Drawing.find_by_id(params[:id])
             if @drawing.artist_id == session[:artist_id]
                 @drawing.delete
-                redirect to '/drawing'
+                redirect to '/drawings'
             else
-                redirect to '/drawing'
+                redirect to '/drawings'
             end
         else
             redirect to '/login'
         end
     end
-end
 end

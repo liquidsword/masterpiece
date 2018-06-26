@@ -1,0 +1,15 @@
+<h2>Artists</h2
+
+<% unless locals.empty? %>
+    <%= message %>
+<% end %>
+
+
+<h3>Sign Up</h3>
+
+<form action='/join' method='POST'>
+    <p>Name: <input type="text" name="artist_name"></p>
+    <p>Email: <input type="text" name="email"></p>
+    <p>Password: <input type="text" name="password"></p>
+    <input class="btn btn-primary" type="submit">
+</form>
