@@ -1,6 +1,6 @@
 require './config/environment'
 
-
+class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -13,6 +13,12 @@ require './config/environment'
   end
 
   helpers do
+    def redirect_if_not_logged_in
+        if !logged_in?
+          redirect "/login?error= Please log in to continue!"
+        end
+    end
+
     def logged_in?
       !!session[:artist_id]
     end
