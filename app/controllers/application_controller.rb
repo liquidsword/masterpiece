@@ -22,4 +22,3 @@ require './config/environment'
     end
 
   end
-end
