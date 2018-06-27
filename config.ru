@@ -6,6 +6,6 @@ end
 
 use Rack::MethodOverride
 
-run ArtistController
-run DrawingsController
+use ArtistController
+use DrawingsController
 run ApplicationController

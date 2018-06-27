@@ -2,12 +2,16 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
 
-
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "masterpiece_secret"
+  end
+
+  get '/join' do
+    erb :'artists/create_artist'
+    end
   end
 
   get '/' do
@@ -28,6 +32,6 @@ class ApplicationController < Sinatra::Base
     def current_artist
       Artist.find(session[:artist_id])
     end
-
   end
-end
+#end
+
