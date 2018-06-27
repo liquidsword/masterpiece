@@ -1,6 +1,6 @@
 # MyArtwork
-1. First clone MyArtwork from Github
-2. Change directory to MyArtwork
+1. First clone Masterpiece from Github
+2. Change directory to Masterpiece
 3. Run bundle install.
 4. Run rake db:migrate
 5. Run shotgun.

@@ -7,3 +7,5 @@ end
 use Rack::MethodOverride
 
 run ApplicationController
+run ArtistController
+run DrawingsController
