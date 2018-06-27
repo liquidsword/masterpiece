@@ -10,7 +10,7 @@ class ArtistController < ApplicationController
         if !session[:artist_id]
             erb :'artists/create_artist', locals: {message: "Please join before attempting to post your drawing"}
         else
-            redirect to '/drawing'
+            redirect to '/drawings'
         end
     end
 
@@ -20,7 +20,7 @@ class ArtistController < ApplicationController
         else
             @artist = Artist.create(:artist_name => params[:artist_name], :email => params[:email], :password => params[:password])
             session[:artist_id] = @artist.id
-            redirect to '/drawing'
+            redirect to '/drawings'
         end
     end
 
@@ -29,7 +29,7 @@ class ArtistController < ApplicationController
         if !session[:artist_id]
             erb :'artists/login'
         else
-            redirect '/drawing'
+            redirect '/drawings'
         end
     end
 
@@ -37,7 +37,7 @@ class ArtistController < ApplicationController
         artist = Artist.find_by(:artist_name => params[:artist_name])
         if artist && artist.authenticate(params[:password])
             session[:artist_id] = artist.id
-            redirect '/drawing'
+            redirect '/drawings'
         else            
             redirect to '/join'
         end
