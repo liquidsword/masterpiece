@@ -9,11 +9,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "masterpiece_secret"
   end
 
-  get '/join' do
-    erb :'artists/create_artist'
-    end
-  end
-
   get '/' do
     erb :index
   end
@@ -33,5 +28,5 @@ class ApplicationController < Sinatra::Base
       Artist.find(session[:artist_id])
     end
   end
-#end
+end
 
