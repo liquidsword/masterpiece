@@ -9,6 +9,10 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "masterpiece_secret"
   end
 
+  get '/action_page.php' do
+      <img src="code1.jpg" alt="Computer blue" style="width:300px;height:400px;">
+    end
+    
   get '/' do
     erb :index
   end
@@ -29,4 +33,3 @@ class ApplicationController < Sinatra::Base
     end
   end
 end
-
