@@ -1,6 +1,11 @@
 <h2>Display a masterpiece</h2>
 
-<form action= <img src="https://unsplash.com/photos/Pt_YmiYm7a4" alt="Yummy food" style="width:104px;height:142px;">
-  Select a file: <input type="file" name="myFile"><br><br>
-  <input type="submit">
-</form>
+#form action="/action_page.php" target="_blank" method="get">
+#Select a file: input type="file" name="myFile">
+  #input type="submit">
+#/form>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="images[]" multiple />
+      <input type="submit" />
+    </form>

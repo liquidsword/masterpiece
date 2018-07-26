@@ -29,7 +29,8 @@ class DrawingsController < ApplicationController
     end
 
     get '/drawings/:id' do
-        if session[:artist_id]
+#binding.pry
+      if session[:artist_id]
             @drawing = Drawing.find_by_id(params[:id])
             erb :'/drawings/show_drawing'
         else

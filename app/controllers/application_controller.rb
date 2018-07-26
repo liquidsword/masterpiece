@@ -10,8 +10,8 @@ class ApplicationController < Sinatra::Base
   end
 
   #https://unsplash.com/photos/Pt_YmiYm7a4
-  #get '/action_page.php' do
-    #end
+  get '/action_page.php' do
+    end
 
   get '/' do
     erb :index
