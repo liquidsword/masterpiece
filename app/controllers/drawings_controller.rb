@@ -38,6 +38,10 @@ class DrawingsController < ApplicationController
         end
     end
 
+    get '/upload' do
+      
+    end
+
     post '/upload' do
       content_type :img
 

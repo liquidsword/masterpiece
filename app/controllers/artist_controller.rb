@@ -4,7 +4,7 @@ class ArtistController < ApplicationController
        @artist = artist.find_by_slug(params[:slug])
         render erb :'artists/show'
        end
-  
+
 
     get '/join' do
         if !session[:artist_id]
@@ -16,7 +16,7 @@ class ArtistController < ApplicationController
 
     post '/join' do
         if params[:artist_name] == "" || params[:email] == "" || params[:password] == ""
-            redirect to '/join'
+            render '/join'
         else
             @artist = Artist.create(:artist_name => params[:artist_name], :email => params[:email], :password => params[:password])
             session[:artist_id] = @artist.id
@@ -38,7 +38,7 @@ class ArtistController < ApplicationController
         if artist && artist.authenticate(params[:password])
             session[:artist_id] = artist.id
             redirect '/drawings'
-        else            
+        else
             redirect to '/join'
         end
     end
