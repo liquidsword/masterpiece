@@ -38,6 +38,14 @@ class DrawingsController < ApplicationController
         end
     end
 
+    post '/upload' do
+      content_type :img
+
+      res = "I received the following files:\n"
+      res << params['images'].map{|f| f[:filename] }.join("\n")
+      res
+    end
+
     get '/drawings/:id/edit' do
         if session[:artist_id]
             @drawing = Drawing.find_by_id(params[:id])
