@@ -38,16 +38,20 @@ class DrawingsController < ApplicationController
         end
     end
 
-    get '/upload' do
-      
+    get '/' do
+      erb :create_drawing
     end
 
-    post '/upload' do
-      content_type :img
+    post '/save_image' do
 
-      res = "I received the following files:\n"
-      res << params['images'].map{|f| f[:filename] }.join("\n")
-      res
+      @filename = params[:file][:filename]
+      file = params[:file][:tempfile]
+
+      File.open("./public/#{overwatch_by_kohiu-dag75ad.png}", 'wb') do |f|
+        f.write(file.read)
+      end
+
+      erb :show_drawing
     end
 
     get '/drawings/:id/edit' do
