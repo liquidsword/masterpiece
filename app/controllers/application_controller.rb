@@ -1,4 +1,5 @@
 require './config/environment'
+require 'Sinatra'
 
 class ApplicationController < Sinatra::Base
 
@@ -31,6 +32,7 @@ class ApplicationController < Sinatra::Base
 
     erb :show_drawing
   end
+
 
   helpers do
     def redirect_if_not_logged_in
