@@ -47,7 +47,7 @@ class DrawingsController < ApplicationController
       @filename = params[:file][:filename]
       file = params[:file][:tempfile]
 
-      File.open("./public/#{overwatch_by_kohiu-dag75ad.png}", 'wb') do |f|
+      File.open("./public/#{@filename}", 'wb') do |f|
         f.write(file.read)
       end
 

@@ -1,10 +1,20 @@
-<p><%=@drawing.art%></p>
+# p><%=drawing.art%>/p>
 
-<form method="post" action="/drawings/<%=@drawing.id%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete drawing">
+#form method="post" action="/drawings/<%=drawing.id%>/delete">
+  #input id="hidden" type="hidden" name="_method" value="DELETE">
+  #input type="submit" value="Delete drawing">
 
-  <img src="<%= @filename %>" />
-</form>
 
-<a href="/drawings/<%=@drawing.id%>/edit">Edit drawing</a>
+#/form>
+
+#a href="/drawings/<%=drawing.id%>/edit">Edit drawing/a>
+
+<html>
+    <head>
+        <title>Show Image</title>
+    </head>
+    <body>
+        <h1>See Image</h1>
+        <img src="<%= @filename %>" />
+    </body>
+</html>
