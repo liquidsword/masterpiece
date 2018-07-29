@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  get '/' do
+  get '/save_image' do
     erb :create_drawing
   end
 
