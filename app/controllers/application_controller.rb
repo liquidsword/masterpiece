@@ -16,6 +16,22 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  get '/' do
+    erb :create_drawing
+  end
+
+  post '/save_image' do
+
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+
+    File.open("./public/#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
+
+    erb :show_drawing
+  end
+
   helpers do
     def redirect_if_not_logged_in
         if !logged_in?
