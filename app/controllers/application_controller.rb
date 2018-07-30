@@ -1,5 +1,5 @@
 require './config/environment'
-require 'Sinatra'
+
 
 class ApplicationController < Sinatra::Base
 
@@ -10,14 +10,13 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "masterpiece_secret"
   end
 
-  #https://unsplash.com/photos/Pt_YmiYm7a4
-
 
   get '/' do
     erb :index
   end
 
   get '/save_image' do
+    #@save_image = Save_image.all
     erb :create_drawing
   end
 
@@ -29,8 +28,6 @@ class ApplicationController < Sinatra::Base
     File.open("./public/#{@filename}", 'wb') do |f|
       f.write(file.read)
     end
-
-    erb :show_drawing
   end
 
 
