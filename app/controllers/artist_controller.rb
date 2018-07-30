@@ -16,7 +16,7 @@ class ArtistController < ApplicationController
 
     post '/join' do
         if params[:artist_name] == "" || params[:email] == "" || params[:password] == ""
-            render '/join'
+            erb :'artists/join'
         else
             @artist = Artist.create(:artist_name => params[:artist_name], :email => params[:email], :password => params[:password])
             session[:artist_id] = @artist.id

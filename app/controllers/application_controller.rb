@@ -8,26 +8,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "masterpiece_secret"
-  end
 
+  end
 
   get '/' do
     erb :index
-  end
-
-  get '/save_image' do
-    #@save_image = Save_image.all
-    erb :create_drawing
-  end
-
-  post '/save_image' do
-
-    @filename = params[:file][:filename]
-    file = params[:file][:tempfile]
-
-    File.open("./public/#{@filename}", 'wb') do |f|
-      f.write(file.read)
-    end
   end
 
 
